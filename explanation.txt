@@ -1,0 +1,9 @@
+This query retrieves the number of products in different categories from the products table, as well as the number of products that are not in any of the specified categories or have no category assigned. The categories table is joined with the products table using a LEFT JOIN to ensure that all categories are included in the result set, even if they do not have any products.
+
+The first SELECT statement retrieves the number of products in categories 1, 2, and 3 by filtering the categories table for these categories and joining it with the products table on the category_id column. The COUNT function is used to count the number of products in each category. The GROUP BY clause is used to group the results by category name.
+
+The second SELECT statement retrieves the number of products that are not in categories 1, 2, or 3 by filtering the products table for all categories that are not in this list. The COUNT function is used to count the number of products that meet this condition. The AS keyword is used to assign a label of 'Other' to the results.
+
+The third SELECT statement retrieves the number of products that have no category assigned by filtering the products table for all rows where the category_id column is NULL. The COUNT function is used to count the number of products that meet this condition. The AS keyword is used to assign a label of 'No Category' to the results.
+
+The UNION operator is used to combine the results of the three SELECT statements into a single result set. Each SELECT statement must have the same number of columns and the same data types for each column to be able to be combined using UNION.
