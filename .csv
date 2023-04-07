@@ -1,0 +1,14 @@
+SELECT c.category_name, COUNT(p.product_id) AS num_products
+FROM categories c
+LEFT JOIN products p
+    ON c.category_id = p.category_id
+WHERE c.category_id IN (1, 2, 3)
+GROUP BY c.category_name
+UNION
+SELECT 'Other' AS category_name, COUNT(*) AS num_products
+FROM products
+WHERE category_id NOT IN (1, 2, 3)
+UNION
+SELECT 'No Category' AS category_name, COUNT(*) AS num_products
+FROM products
+WHERE category_id IS NULL
